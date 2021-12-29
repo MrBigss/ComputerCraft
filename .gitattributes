@@ -1,0 +1,12 @@
+# Basic .gitattributes for a Lua repo.
+
+# Source files
+# ============
+*.lua       text eol=lf
+
+# Luadoc output
+# =============
+*.html      text diff=html
+*.css       text diff=css
+
+
