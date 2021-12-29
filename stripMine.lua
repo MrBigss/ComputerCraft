@@ -154,6 +154,7 @@ end
 
 -- Torch every 13 steps
 local function digTunnel(tunnelLength)
+	placeTorch()
   for n = 1, tunnelLength do
     turtle.select(fillerSlot)
     turtle.placeDown()
@@ -180,12 +181,13 @@ local function main()
   -- Do the first part
   digTunnel(length)
   turtle.turnLeft()
-  tryForward()
-  tryForward()
-  placeTorch()
-  tryForward()
-  tryForward()
+	placeTorch()
+  tryForward() tryDigUp()
+  tryForward() tryDigUp()
+  tryForward() tryDigUp()
+  tryForward() tryDigUp()
   turtle.turnLeft()
+	placeTorch()
   digTunnel(length)
   print("Tunnel complete.")
   print("Mined " .. collected .. " items total.")
