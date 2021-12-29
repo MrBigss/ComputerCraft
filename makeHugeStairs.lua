@@ -202,6 +202,10 @@ end
 -- ----------------------------------------------------------------------------------------------------
 function main()
   -- Do some left turn stairs, parameters are landing length, stair length, and tunnel height.
+  -- Make a whole turn. (4 batch of stairs)
+  make3WideStairsDownLeft(2, 18, 5)
+  make3WideStairsDownLeft(2, 18, 5)
+  make3WideStairsDownLeft(2, 18, 5)
   make3WideStairsDownLeft(2, 18, 5)
 end
 
