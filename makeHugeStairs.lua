@@ -88,6 +88,7 @@ function dig3WideTunnel(length, height)
   makeFloor3Wide()
   for h=2,height do tryUp() end
   makeRoof3Wide()
+  inventorymanager.checkInventoryAndEmptyIfFull()
   
   -- Make all other
   for i = 2, length do
@@ -96,16 +97,21 @@ function dig3WideTunnel(length, height)
     makeFloor3Wide()
     for h=2,height do tryUp() end
     makeRoof3Wide()
+    inventorymanager.checkInventoryAndEmptyIfFull()
   end
 end
 
 
+-- ----------------------------------------------------------------------------------------------------
+-- Position and place the stairs, in the stair shaft.
+-- ----------------------------------------------------------------------------------------------------
 function makeStairsForStairs()
   tryUp()
   turtle.turnRight() turtle.turnRight()
   placeStairs3Wide()
   turtle.turnRight() turtle.turnRight()
 end
+
 
 -- ----------------------------------------------------------------------------------------------------
 -- Dig a three wide stair, starting from the top, and going down. Also, place a roof, and a floor, and stairs.
@@ -120,6 +126,7 @@ function dig3WideStair(length, height)
   makeStairsForStairs()
   for h=2,height do tryUp() end -- We actually want them "one higher" to work with a same height tunnel.
   makeRoof3Wide()
+  inventorymanager.checkInventoryAndEmptyIfFull()
   
   -- Make all other
   for i = 2, length do
@@ -131,6 +138,7 @@ function dig3WideStair(length, height)
     makeStairsForStairs()
     for h=2,height do tryUp() end  -- We actually want them "one higher" to work with a same height tunnel.
     makeRoof3Wide()
+    inventorymanager.checkInventoryAndEmptyIfFull()
   end
 end
 
@@ -165,6 +173,7 @@ function make3WideLeftCorner(height)
   --dig3WideTunnel(1, height)
   --tryForward() -- Position at top of new landing.
 end
+
 
 -- ----------------------------------------------------------------------------------------------------
 -- Make a landing, stairs down, a left corner, a landing, stairs down, a landing.

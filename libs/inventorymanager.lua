@@ -58,6 +58,7 @@ function inventorymanager.allSlotsAreEmpty(Slots)
   return true -- All slots empty.
 end
 
+
 -- ----------------------------------------------------------------------------------------------------
 -- Returns true if all slots are completely full.
 -- ----------------------------------------------------------------------------------------------------
@@ -70,6 +71,7 @@ function inventorymanager.someSlotsAreEmpty(Slots)
   return false -- All slots have something.
 end
 
+
 -- ----------------------------------------------------------------------------------------------------
 -- Returns true if all slots are completely full.
 -- ----------------------------------------------------------------------------------------------------
@@ -81,6 +83,7 @@ function inventorymanager.checkAllSlotsFull(Slots)
   end
   return true -- All filler slots are full.
 end
+
 
 -- ----------------------------------------------------------------------------------------------------
 -- Selects a non empty (>1) item slot.
@@ -165,8 +168,6 @@ function placeStairsUnder()
   end
   if not turtle.placeDown() then error("Could not place stair, aborting.") end -- Place stair, or die
 end
-
-
 
 
 -- ----------------------------------------------------------------------------------------------------
