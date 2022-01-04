@@ -256,6 +256,7 @@ function singleTreeManagement()
   -- Move two forward, suck around.
   -- Move back to.
   -- Move back once, turn around, dump inventory.
+  doInventoryManagement() -- Startup, try to get everything needed from inventories.
   while true do
     inventorymanager:cleanInventory() displaymanager:printHud()
     placeSapling() -- Also digs if something is there.
