@@ -1,2 +1,2 @@
 
-os.run({}, "github clone MrBigss/ComputerCraft -b main .")
+os.run({}, "github", "clone MrBigss/ComputerCraft -b main .")
