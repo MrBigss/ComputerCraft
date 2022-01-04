@@ -1,5 +1,9 @@
 -- Manage a small spruce forest, to produce wood, to be used as charcoal and other things.
 
+if not os.computerLabel() then
+  error("Put a label on your computer")
+end
+
 gTrashSlot = 15
 require "libs.inventorymanager2"
 require "libs.displaymanager"
