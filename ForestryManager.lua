@@ -91,6 +91,7 @@ function placeSapling()
   while not inventorymanager:selectSlotWithItem({"minecraft:spruce_sapling"}) do
     displaymanager:error("No spruce sapling. Add spruce sapling.")
     os.pullEvent("turtle_inventory") -- Wait for an inventory event.
+    inventorymanager:cleanInventory()
     sleep(0.25) -- In case inventory gets spammed with something like mousewheelie.
   end
   displaymanager:clearError()
@@ -256,13 +257,16 @@ function singleTreeManagement()
   -- Move back to.
   -- Move back once, turn around, dump inventory.
   while true do
-    displaymanager:printHud()
+    inventorymanager:cleanInventory() displaymanager:printHud()
     placeSapling() -- Also digs if something is there.
     tryUp() -- Move one up where the trunk will grow.
     detectTreeGrowth() -- Wait for the tree to grow.
     tryDown() -- Go back in front of the tree.
+    inventorymanager:cleanInventory() displaymanager:printHud()
     cutTree() -- Cut the tree.
-    turtle.forward() pickUpSaplingsAroundTreeBase() turtle.back() 
+    inventorymanager:cleanInventory() displaymanager:printHud()
+    turtle.forward() pickUpSaplingsAroundTreeBase() turtle.back()  -- Pick up sapling (and sticks) from ground.
+    inventorymanager:cleanInventory() displaymanager:printHud()
     doInventoryManagement() -- Drop logs and excess saplings, get fuel, get sapling, refuel.
   end
   
