@@ -7,6 +7,18 @@
 -- shaft when it got removed.
 -- 
 
+-- Adding parameter for length
+local tArgs = { ... }
+if #tArgs ~= 1 then
+	local programName = arg[0] or fs.getName(shell.getRunningProgram())
+	print("Usage: " .. programName .. " <length>")
+	return
+end
+
+local length = tonumber(tArgs[1])
+if length < 1 then
+  error("Length must be more than 0")
+end
 
 -- ==================================================
 -- Function : general wait sleep
@@ -101,10 +113,12 @@ local function main()
   if(os.getComputerLabel() == nil) or os.getComputerLabel() == "" then print("Put a label on your computer, fool!") return end
   term.clear() term.setCursorPos(1,1)
   print(os.getComputerLabel() .. " starting up")
-  if turtle.getFuelLevel() < 200 then print("[FAIL] Fuel less than 200") return end
+  --Fuel usage, 10+ length*8
+  local requiredFuel = (length*8)+10
+  if turtle.getFuelLevel() < requiredFuel  then print("[FAIL] Fuel less than " .. requiredFuel ) return end
   print("[ OK ] Fuel level " .. turtle.getFuelLevel())
-  print("Making a 32 long shaft")
-  makeTunnel(32) -- Requires 192 fuel
+  print("Making a " .. length .. " long shaft")
+  makeTunnel(length) -- Requires 192 fuel
   print("Done making shaft")
   print("Now idle")
 end
