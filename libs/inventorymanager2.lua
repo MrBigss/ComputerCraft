@@ -303,12 +303,14 @@ end
 
 -- Dump cargo into a chest in front. (Includes the trash slot if it has anything.)
 function inventorymanager:dumpCargo()
+  local couldDump = true
   for slot=1,16 do
     if not inventorymanager:isSlotAssigned(slot) then
       turtle.select(slot)
-      turtle.drop()
+      if turtle.getItemCount() > 0 and not turtle.drop() then couldDump = false end
     end
   end
+  return couldDump
 end
 
 

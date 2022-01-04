@@ -65,40 +65,6 @@ end
 
 
 -- ----------------------------------------------------------------------------------------------------
-function displaymanager:print(string)
-  local width, _ = term.getSize()
-  string = tostring(string)
-  string = string.sub(string, 1, width)
-  gTextLines[gTextLinesIndex+1] = string
-  gTextLinesIndex = gTextLinesIndex + 1
-  gTextLinesIndex = (gTextLinesIndex % gTextLinesSize)
-end
-
-
--- ----------------------------------------------------------------------------------------------------
-function displaymanager:clearText()
-  for i=1,gTextLinesSize do gTextLines[i] = "" end
-end
-
-
--- ----------------------------------------------------------------------------------------------------
-function displaymanager:error(string)
-  local width, _ = term.getSize()
-  string = tostring(string)
-  string = string.sub(string, 1, width)
-  gErrorLines[gErrorLinesIndex+1] = string
-  gErrorLinesIndex = gErrorLinesIndex + 1
-  gErrorLinesIndex = (gErrorLinesIndex % gErrorLinesSize)
-end
-
-
--- ----------------------------------------------------------------------------------------------------
-function displaymanager:clearError()
-  for i=1,gErrorLinesSize do gErrorLines[i] = "" end
-end
-
-
--- ----------------------------------------------------------------------------------------------------
 function displaymanager:printHud()
   local width, height = term.getSize()
   
@@ -144,6 +110,42 @@ function displaymanager:printHud()
 end
 
 
+-- ----------------------------------------------------------------------------------------------------
+function displaymanager:print(string)
+  local width, _ = term.getSize()
+  string = tostring(string)
+  string = string.sub(string, 1, width)
+  gTextLines[gTextLinesIndex+1] = string
+  gTextLinesIndex = gTextLinesIndex + 1
+  gTextLinesIndex = (gTextLinesIndex % gTextLinesSize)
+  displaymanager:printHud()
+end
+
+
+-- ----------------------------------------------------------------------------------------------------
+function displaymanager:clearText()
+  for i=1,gTextLinesSize do gTextLines[i] = "" end
+  displaymanager:printHud()
+end
+
+
+-- ----------------------------------------------------------------------------------------------------
+function displaymanager:error(string)
+  local width, _ = term.getSize()
+  string = tostring(string)
+  string = string.sub(string, 1, width)
+  gErrorLines[gErrorLinesIndex+1] = string
+  gErrorLinesIndex = gErrorLinesIndex + 1
+  gErrorLinesIndex = (gErrorLinesIndex % gErrorLinesSize)
+  displaymanager:printHud()
+end
+
+
+-- ----------------------------------------------------------------------------------------------------
+function displaymanager:clearError()
+  for i=1,gErrorLinesSize do gErrorLines[i] = "" end
+  displaymanager:printHud()
+end
 
 
 
